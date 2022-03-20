@@ -10,6 +10,11 @@ function App() {
   const [beers, setBeers] = useState([])
   const beerNameRef = useRef()
 
+  useEffect(() => {
+    const storedBeers = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+    if(storedBeers) setBeers(storedBeers)
+  }, [])
+
   useEffect(()=>{
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(beers))}, [beers]
   )
