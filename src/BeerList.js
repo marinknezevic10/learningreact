@@ -1,11 +1,10 @@
 import React from 'react'
+import Beer from './Beer'
 // rfc creates function component
 export default function BeerList({beers}) {
   return (
-      //prints out 3 beacuse we have 3 beers on the list
-    <div>
-        
-        {beers.length}
-    </div>
+      beers.map(beer => {
+          return <Beer beer={beer} />
+      })
   )
 }
