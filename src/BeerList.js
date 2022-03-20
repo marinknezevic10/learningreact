@@ -4,7 +4,7 @@ import Beer from './Beer'
 export default function BeerList({beers}) {
   return (
       beers.map(beer => {
-          return <Beer beer={beer} />
+          return <Beer key={beer} beer={beer} />
       })
   )
 }
