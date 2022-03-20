@@ -12,6 +12,7 @@ function App() {
     const name = beerNameRef.current.value
     if (name=== '') return
     console.log(name)
+    beerNameRef.current.value = null
 
   }
 
