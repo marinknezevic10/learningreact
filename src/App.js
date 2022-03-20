@@ -1,13 +1,18 @@
 //route of our entire application
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import BeerList from './BeerList';
 import { v4 as uuidv4 } from 'uuid'
 
+const LOCAL_STORAGE_KEY = 'beerApp.beers'
 
 function App() {
   //object destructuring nez sta je to
   const [beers, setBeers] = useState([])
   const beerNameRef = useRef()
+
+  useEffect(()=>{
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(beers))}, [beers]
+  )
 
   //adding beer function
   function handleAddBeer(e){
