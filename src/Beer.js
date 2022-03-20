@@ -3,7 +3,12 @@ import React from 'react'
 export default function Beer({beer}) {
   return (
     <div>
-        {beer}
+
+        <label>
+            <input type ="checkbox" checked={beer.complete} />
+            {beer.name}
+        </label>
+        
     </div>
   )
 }

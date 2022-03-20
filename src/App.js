@@ -1,17 +1,27 @@
 //route of our entire application
-import React, { useState} from 'react';
+import React, { useState, useRef} from 'react';
 import BeerList from './BeerList';
 
 function App() {
   //object destructuring nez sta je to
-  const [beers, setBeers] = useState(['Beer 1', 'Beer 2', 'Beer 3'])
+  const [beers, setBeers] = useState([])
+  const beerNameRef = useRef()
+
+  //adding beer function
+  function handleAddBeer(e){
+    const name = beerNameRef.current.value
+    if (name=== '') return
+    console.log(name)
+
+  }
+
   //returning beerlist as our first element of app
   
   return (
     <>
     <BeerList beers={beers} />
-    <input type="text" />
-    <button>Add Beer</button>
+    <input ref={beerNameRef} type="text" />
+    <button onClick={handleAddBeer}>Add Beer</button>
     <button>Clear beer</button>
   </>
   )
