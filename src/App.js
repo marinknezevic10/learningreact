@@ -1,6 +1,8 @@
 //route of our entire application
 import React, { useState, useRef} from 'react';
 import BeerList from './BeerList';
+import { v4 as uuidv4 } from 'uuid'
+
 
 function App() {
   //object destructuring nez sta je to
@@ -12,7 +14,7 @@ function App() {
     const name = beerNameRef.current.value
     if (name=== '') return
     setBeers(prevBeers => {
-      return [...prevBeers, {id: 1, name: name, complete: false}]
+      return [...prevBeers, {id: uuidv4(), name: name, complete: false}]
     })
     beerNameRef.current.value = null
 
