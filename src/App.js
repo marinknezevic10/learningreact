@@ -11,7 +11,9 @@ function App() {
   function handleAddBeer(e){
     const name = beerNameRef.current.value
     if (name=== '') return
-    console.log(name)
+    setBeers(prevBeers => {
+      return [...prevBeers, {id: 1, name: name, complete: false}]
+    })
     beerNameRef.current.value = null
 
   }
