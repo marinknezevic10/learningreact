@@ -1,6 +1,8 @@
 //route of our entire application
 import React, { useState, useRef, useEffect} from 'react';
 import BeerList from './BeerList';
+import {Switch,Route} from 'react-dom'
+import Login from './login/Login'
 import { v4 as uuidv4 } from 'uuid'
 
 const LOCAL_STORAGE_KEY = 'beerApp.beers'
@@ -10,11 +12,13 @@ function App() {
   const [beers, setBeers] = useState([])
   const beerNameRef = useRef()
 
+  //storing
   useEffect(() => {
     const storedBeers = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     if(storedBeers) setBeers(storedBeers)
   }, [])
 
+  //getting beer list
   useEffect(()=>{
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(beers))}, [beers]
   )
@@ -34,10 +38,13 @@ function App() {
   
   return (
     <>
+    <div>
+      <Route exact path='/' component={Login}/>
     <BeerList beers={beers} />
     <input ref={beerNameRef} type="text" />
     <button onClick={handleAddBeer}>Add Beer</button>
     <button>Clear beer</button>
+    </div>
   </>
   )
    
